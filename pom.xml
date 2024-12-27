@@ -12,6 +12,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <quarkus.version>2.13.3.Final</quarkus.version>
+        <net.bytebuddy.experimental>true</net.bytebuddy.experimental>
     </properties>
 
     <dependencyManagement>
@@ -32,6 +33,16 @@
         <groupId>io.quarkus</groupId>
         <artifactId>quarkus-resteasy</artifactId>
     </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-resteasy-jackson</artifactId>
+            <version>${quarkus.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>1.14.5</version> <!-- Ensure this version supports your Java version -->
+        </dependency>
     <dependency>
         <groupId>io.quarkus</groupId>
         <artifactId>quarkus-hibernate-orm-panache</artifactId>
