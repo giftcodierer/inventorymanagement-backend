@@ -43,7 +43,7 @@ public class AuthResource {
             LOGGER.warning("Password mismatch for user: " + loginUser.getUsername());
             return Response.status(Response.Status.UNAUTHORIZED).entity(new AuthenticationResponse(false, null, null)).build();
         }
-        String token = jwtUtil.generateToken(user.getUsername(), user.getRole());
+        String token = jwtUtil.generateToken(user.getUsername(), user.getRole(), user.getId());
         AuthenticationResponse response = new AuthenticationResponse(true, user.getRole(), token);
         LOGGER.info("Generated token: " + token); // Log the generated token
         LOGGER.info("User logged in successfully: " + loginUser.getUsername());

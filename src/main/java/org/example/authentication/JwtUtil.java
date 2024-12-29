@@ -12,9 +12,10 @@ import java.util.Map;
 public class JwtUtil {
     private String secret = "your_secret_key";
 
-    public String generateToken(String username, String role) {
+    public String generateToken(String username, String role, Long userID) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("role", role);
+        claims.put("userID", userID);
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(username)
@@ -30,6 +31,10 @@ public class JwtUtil {
 
     public String extractRole(String token) {
         return (String) Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().get("role");
+    }
+
+    public Long extractUserID(String token) {
+        return ((Number) Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().get("userID")).longValue();
     }
 
     public boolean validateToken(String token, String username) {

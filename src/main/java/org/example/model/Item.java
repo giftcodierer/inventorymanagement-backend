@@ -3,6 +3,7 @@ package org.example.model;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Item extends PanacheEntityBase {
@@ -12,7 +13,13 @@ public class Item extends PanacheEntityBase {
 
     private String deviceName;
     private String deviceCondition;
-    private String loanDuration;
+    @ManyToOne
+    private User borrowedBy;
+
+    private Integer borrowDuration;
+
+    @Temporal(TemporalType.DATE)
+    private Date borrowedUntil;
 
     @ManyToOne
     private Category category;
@@ -45,12 +52,28 @@ public class Item extends PanacheEntityBase {
         this.deviceCondition = deviceCondition;
     }
 
-    public String getLoanDuration() {
-        return loanDuration;
+    public User getBorrowedBy() {
+        return borrowedBy;
     }
 
-    public void setLoanDuration(String loanDuration) {
-        this.loanDuration = loanDuration;
+    public void setBorrowedBy(User borrowedBy) {
+        this.borrowedBy = borrowedBy;
+    }
+
+    public Integer getBorrowDuration() {
+        return borrowDuration;
+    }
+
+    public void setBorrowDuration(Integer borrowDuration) {
+        this.borrowDuration = borrowDuration;
+    }
+
+    public Date getBorrowedUntil() {
+        return borrowedUntil;
+    }
+
+    public void setBorrowedUntil(Date borrowedUntil) {
+        this.borrowedUntil = borrowedUntil;
     }
 
     public Category getCategory() {

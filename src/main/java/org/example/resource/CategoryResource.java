@@ -27,7 +27,11 @@ public class CategoryResource {
 
     @POST
     public Response create(Category category) {
-        category.persist();
+        if (category.getId() != null) {
+            category = Category.getEntityManager().merge(category);
+        } else {
+            category.persist();
+        }
         return Response.status(Response.Status.CREATED).entity(category).build();
     }
 
