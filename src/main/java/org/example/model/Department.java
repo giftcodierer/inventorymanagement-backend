@@ -1,6 +1,5 @@
 package org.example.model;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 import javax.persistence.Entity;
@@ -15,6 +14,7 @@ public class Department extends PanacheEntityBase {
     private Long id;
 
     private String name;
+    private String location; // New field
 
     // Getters and Setters
     public Long getId() {
@@ -31,5 +31,13 @@ public class Department extends PanacheEntityBase {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

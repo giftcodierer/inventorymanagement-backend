@@ -15,6 +15,13 @@
         <net.bytebuddy.experimental>true</net.bytebuddy.experimental>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+    </repositories>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -28,11 +35,26 @@
     </dependencyManagement>
 
     <dependencies>
-    <!-- Quarkus dependencies -->
-    <dependency>
-        <groupId>io.quarkus</groupId>
-        <artifactId>quarkus-resteasy</artifactId>
-    </dependency>
+        <!-- Quarkus dependencies -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-resteasy</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>2.34</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet</artifactId>
+            <version>2.34</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-resteasy-jackson</artifactId>
@@ -41,33 +63,32 @@
         <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
-            <version>1.14.5</version> <!-- Ensure this version supports your Java version -->
+            <version>1.14.5</version>
         </dependency>
-    <dependency>
-        <groupId>io.quarkus</groupId>
-        <artifactId>quarkus-hibernate-orm-panache</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>io.quarkus</groupId>
-        <artifactId>quarkus-jdbc-mysql</artifactId>
-    </dependency>
-    <dependency>
-    <groupId>mysql</groupId>
-    <artifactId>mysql-connector-java</artifactId>
-    <version>8.0.27</version>
-</dependency>
-    <dependency>
-        <groupId>org.threeten</groupId>
-        <artifactId>threetenbp</artifactId>
-        <version>1.5.1</version>
-    </dependency>
-    <dependency>
-        <groupId>javax.persistence</groupId>
-        <artifactId>javax.persistence-api</artifactId>
-        <version>2.2</version>
-    </dependency>
-    <!-- Weitere Abhängigkeiten -->
-</dependencies>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-hibernate-orm-panache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-jdbc-mysql</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.27</version>
+        </dependency>
+        <dependency>
+            <groupId>org.threeten</groupId>
+            <artifactId>threetenbp</artifactId>
+            <version>1.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>2.2</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>

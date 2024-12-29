@@ -39,6 +39,7 @@ public class DepartmentResource {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         department.setName(updatedDepartment.getName());
+        department.setLocation(updatedDepartment.getLocation()); // Update location
         department.persist();
         return Response.ok(department).build();
     }

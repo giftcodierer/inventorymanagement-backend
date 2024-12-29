@@ -1,6 +1,5 @@
 package org.example.service;
 
-
 import org.example.model.Department;
 
 import javax.enterprise.context.ApplicationScoped;

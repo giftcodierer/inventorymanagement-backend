@@ -1,5 +1,5 @@
 package org.example.model;
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
+
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 import javax.persistence.*;
@@ -10,7 +10,9 @@ public class Item extends PanacheEntityBase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String deviceName;
+    private String deviceCondition;
+    private String loanDuration;
 
     @ManyToOne
     private Category category;
@@ -27,12 +29,28 @@ public class Item extends PanacheEntityBase {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getDeviceName() {
+        return deviceName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
+    }
+
+    public String getDeviceCondition() {
+        return deviceCondition;
+    }
+
+    public void setDeviceCondition(String deviceCondition) {
+        this.deviceCondition = deviceCondition;
+    }
+
+    public String getLoanDuration() {
+        return loanDuration;
+    }
+
+    public void setLoanDuration(String loanDuration) {
+        this.loanDuration = loanDuration;
     }
 
     public Category getCategory() {
