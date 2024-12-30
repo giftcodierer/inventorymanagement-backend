@@ -28,25 +28,18 @@ public class AuthResource {
     @Inject
     JwtUtil jwtUtil;
 
-    private static final Logger LOGGER = Logger.getLogger(AuthResource.class.getName());
-
     @POST
     @Path("/login")
     public Response login(User loginUser) {
-        LOGGER.info("Attempting to log in user: " + loginUser.getUsername());
         User user = userRepository.findByUsername(loginUser.getUsername());
         if (user == null) {
-            LOGGER.warning("User not found: " + loginUser.getUsername());
             return Response.status(Response.Status.UNAUTHORIZED).entity(new AuthenticationResponse(false, null, null)).build();
         }
         if (!checkPassword(loginUser.getPassword(), user.getPassword())) {
-            LOGGER.warning("Password mismatch for user: " + loginUser.getUsername());
             return Response.status(Response.Status.UNAUTHORIZED).entity(new AuthenticationResponse(false, null, null)).build();
         }
         String token = jwtUtil.generateToken(user.getUsername(), user.getRole(), user.getId());
         AuthenticationResponse response = new AuthenticationResponse(true, user.getRole(), token);
-        LOGGER.info("Generated token: " + token); // Log the generated token
-        LOGGER.info("User logged in successfully: " + loginUser.getUsername());
         return Response.ok(response).build();
     }
 

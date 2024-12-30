@@ -27,7 +27,11 @@ public class DepartmentResource {
 
     @POST
     public Response create(Department department) {
-        department.persist();
+        if (department.getId() != null) {
+            department = Department.getEntityManager().merge(department);
+        } else {
+            department.persist();
+        }
         return Response.status(Response.Status.CREATED).entity(department).build();
     }
 
